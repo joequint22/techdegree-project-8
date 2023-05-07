@@ -37,7 +37,7 @@ body{
 .card{
     box-shadow: 0 3px   rgba(0, 0, 0, 0.2);
     margin: 10px auto 50px auto;
-    height: 600px;
+    height: 550px;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -62,9 +62,9 @@ body{
 .avatar{
     align-self: center;
     border-radius: 50%;
-    height: 25.5%;
+    height: 28.5%;
     margin: 0 auto;
-    margin-top: 75px;
+    margin-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
     
@@ -81,7 +81,7 @@ body{
     line-height: 23px;
     font-size: .8rem;
     margin: auto; 
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     text-align: center;
 
 }
@@ -96,7 +96,7 @@ body{
 }
 
 .email, .address{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     padding-bottom: 25px;
     font-size: 1.1rem;
 
@@ -106,16 +106,13 @@ body{
     opacity: 1;
     font-size: 2.3rem;
     line-height: 60px;
-    padding-bottom: 65px;
+    padding-bottom: 40px;
 }
 .email, .address{
-    display: flex;
     flex-direction: column;
-    font-size: 1rem;
+    font-size: 1.16rem;
     opacity: .5;
     margin: auto;
-    
-
  }
 .overlay{
     position: absolute;
@@ -127,7 +124,7 @@ body{
 }
 
 .modal{
-    width: 375px;
+    width: 72%;
     height: 600px;
     margin: 155px auto;
     text-align: center;
@@ -135,7 +132,7 @@ body{
     position: relative;
     background: #fff;
     border: 1px solid #77b;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .avatar-modal{
@@ -144,10 +141,35 @@ body{
     height: 135px;
 }
 
+.name-modal{
+    font-size: 1.8rem;
+    line-height: 45px;
+}
+
+.email-modal, .city-modal{
+    opacity: 0.6;
+    margin: 5px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+hr{
+    opacity: 0.2;
+    margin: 20px 0 30px 0;
+}
+.modal-info p{
+    opacity: 0.6;
+    font-size: 0.9rem;
+    margin: 15px;
+    margin-top: 0;
+}
+
 .modal-close{
     position: absolute;
-    right: 15px;
-    top: 5px;
+    right: 12.5px;
+    top: 12.5px;
+    border: none;
+    background: none;
     cursor: pointer;
 }
 
@@ -183,8 +205,7 @@ body{
     }
     .avatar{
         margin: auto;
-        height: 93%;
-        margin-right: 20px;
+        height: 100%;
     }
     .name, .email, .address{
         margin: 0;
@@ -193,12 +214,37 @@ body{
 
     .name{
         font-size: 1.8rem;
+        padding-bottom: 0;
     }
 
     .text-container{
         align-items: start;
         width: 100%;
         line-height: 30px;
+        margin: 0;
+        padding-left: 15px;
+    }
+
+    .avatar-modal{
+        margin: 25px;
+        margin-top: 10px;
+        width: 35%;
+        height: 35%;
+    }
+
+    hr{
+        width: 80%;
+        align-self: center;
+    }
+
+    .modal{
+        width: 57.5%;
+        height: auto;
+    }
+    .modal-close{
+        top: 10px;
+        right: 15px;
+
     }
 }
 
@@ -235,5 +281,19 @@ body{
         width: 85%;
 
     }
+    .modal{
+        width: 40%;
+        height: 52%;
+    }
 
+    .name-modal{
+        font-size: 1.5rem
+    }
+
+    .avatar-modal{
+        width: 50%;
+    }
+    .text-container-modal{
+        padding: 0;
+    }
 }
