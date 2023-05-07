@@ -46,7 +46,7 @@ body{
     box-shadow: 10px solid black;
     background: #fff;
     transform: translateX(400%);
-    transition: .5s ease .135s;
+    transition: .4235s ease;
 }
 
 .card:nth-of-type(odd){
