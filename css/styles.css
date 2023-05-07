@@ -196,7 +196,7 @@ hr{
         width: 95%;
     }
     .card{
-        width: 80%;
+        width: 90%;
         height: 200px;
         display: grid;
         grid-template-columns: 200px 1fr;
