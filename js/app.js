@@ -22,4 +22,75 @@
         }
 
         
+//Will hold the values from API
+let employees = [];
+
+//string literal that stores the url of the API
+const urlAPI = 'https://randomuser.me/api/?results=12&inc=name, picture, email, location, phone, dob &noinfo &nat=US';
+
+//grid container stores the DOM element that is the container for the employees
+const gridContainer = document.querySelector('.grid-container')
+
+//overlay stores the DOM element that acts as an overlay for the modal
+const overlay = document.querySelector('.overlay')
+
+//modal container stores the DOM element that is a container for the modal information
+const modalContainer = document.querySelector('.modal-content')
+
+//modalClose stores the DOM element that is the modal's close button
+const modalClose = document.querySelector('.modal-close')
+        
+
+//fetch data from API
+fetch(urlAPI)
+        .then(res => res.json())
+        .then(res => res.results)
+        .then(displayEmployees)
+        .catch(err => console.log(err))
     
+function displayEmployees(employeeData){
+    employees = employeeData;
+
+    //store the employee HTML as we create it
+    let employeeHTML = '';
+    
+    // loop through each employee and crete HTML markup
+    employees.foreach((employee, index) => {
+        let name = employee.name;
+        let email = employee.email;
+        let city = employee.location.city;
+        let picture = employee.picture;
+
+    //template literals make this so much cleaner
+    employeeHTML += `
+        <div class="card" data-index="${index}">
+            <img class="avatar" src="${$picture.large}" />
+            <div class="text-container">
+                <h2 class="name">${name.first} ${name.last}</h2>
+                <p class="email">${email}</p>
+                <p class="address">${city}</p>
+            </div>
+        </div>
+    `
+
+    });
+
+    gridContainer.innerHTML = employeeHTML;
+
+}
+
+function displayModal(index){
+
+    //use object des
+
+
+
+
+
+
+
+
+
+
+
+}
