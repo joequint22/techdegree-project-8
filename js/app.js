@@ -2,7 +2,7 @@
 
    
     
-    const cards = document.querySelectorAll('.card');
+    
     
 
         window.addEventListener('scroll', checkCards);
@@ -10,6 +10,7 @@
 
         function checkCards(){
                 const triggerBottom = window.innerHeight / 5 * 4;
+                const cards = document.querySelectorAll('.card');
                 cards.forEach(card => {
                     const cardTop = card.getBoundingClientRect().top
                     if(cardTop < triggerBottom){
@@ -88,17 +89,19 @@ function displayModal(index){
     //use object destructuring make out template literal cleaner
     let { name, dob, phone, email, location: {city, street, state, postcode}, picture } = employees[index];
 
-    let data = new Date(dob.date);
+    let date = new Date(dob.date);
     const modalHTML = `
-        <img class="avatar" src="${picture.large}" />
+        <img class="avatar-modal" src="${picture.large}" />
         <div class="text-container">
-            <h2 class="name">${name.first} ${name.last}</h2>
-            <p class="email">${email}</p>
-            <p class="address">${city}</p>
+            <h2 class="name-modal">${name.first} ${name.last}</h2>
+            <p class="email-modal">${email}</p>
+            <p class="city-modal">${city}</p>
             <hr />
-            <p>${phone}</p>
-            <p class="address">${street}, ${state} ${postcode}</p>
-            <p>Birthday: ${date.getMonth()} / ${date.getDate()} / ${date.getFullYear()}</p>
+            <div class="modal-info">
+                <p>${phone}</p>
+                <p class="address-modal">${street}, ${state} ${postcode}</p>
+                <p>Birthday: ${date.getMonth()} / ${date.getDate()} / ${date.getFullYear()}</p>
+            </div>
         </div>
     `;
 
