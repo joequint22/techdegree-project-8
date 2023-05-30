@@ -1,27 +1,25 @@
 //animation on scroll 
 
-   
-    
-    
-    
 
-        window.addEventListener('scroll', checkCards);
-        checkCards()
+function checkCards(){
+    const triggerBottom = window.innerHeight / 5 * 4;
+    const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top
+            if(cardTop < triggerBottom){
+                card.classList.add('show')
+            } else {
+                card.classList.remove('show')
+            }
 
-        function checkCards(){
-                const triggerBottom = window.innerHeight / 5 * 4;
-                const cards = document.querySelectorAll('.card');
-                cards.forEach(card => {
-                    const cardTop = card.getBoundingClientRect().top
-                    if(cardTop < triggerBottom){
-                        card.classList.add('show')
-                    } else {
-                        card.classList.remove('show')
-                    }
+        })
+}
 
-                })
-        }
 
+
+checkCards() 
+window.addEventListener('scroll', checkCards);
+        
         
 //Will hold the values from API
 let employees = [];
@@ -40,7 +38,10 @@ const modalContainer = document.querySelector('.modal-content')
 
 //modalClose stores the DOM element that is the modal's close button
 const modalClose = document.querySelector('.modal-close')
-        
+
+//MODAL CONTROLS
+
+
 
 //fetch data from API
 fetch(urlAPI)
@@ -49,7 +50,8 @@ fetch(urlAPI)
         .then(displayEmployees)
         .catch(err => console.log(err))
 
-    
+
+
 function displayEmployees(employeeData){
     employees = employeeData;
 
@@ -69,7 +71,7 @@ function displayEmployees(employeeData){
             <div class="card-container">
                 <img class="avatar" src="${picture.large}"/>
                 <div class="text-container">
-                    <h2 class="name">${name.first} ${name.last}</h2>
+                    <h2 class="name">${name.first} <hr class="hr-name"> ${name.last}</h2>
                     <p class="email">${email}</p>
                     <p class="address">${city}</p>
                 </div>
@@ -79,8 +81,6 @@ function displayEmployees(employeeData){
     });
 
     gridContainer.innerHTML = employeeHTML;
-    console.log("hello world")
-
 }
 
 
@@ -91,25 +91,25 @@ function displayModal(index){
 
     let date = new Date(dob.date);
     const modalHTML = `
+        <p class="arrows left-arrow">${"<"}</p>
         <img class="avatar-modal" src="${picture.large}" />
-        <div class="text-container">
+        <p class="arrows right-arrow">${">"}</p>
+        <div class="text-container-modal" data-index="${index}">
             <h2 class="name-modal">${name.first} ${name.last}</h2>
             <p class="email-modal">${email}</p>
             <p class="city-modal">${city}</p>
             <hr />
             <div class="modal-info">
                 <p>${phone}</p>
-                <p class="address-modal">${street}, ${state} ${postcode}</p>
+                <p class="address-modal">${street.number} ${street.name}, ${state} ${postcode}</p>
                 <p>Birthday: ${date.getMonth()} / ${date.getDate()} / ${date.getFullYear()}</p>
             </div>
+            
         </div>
-    `;
-
+    `
     overlay.classList.remove('hidden');
-    modalContainer.innerHTML = modalHTML;
+    modalContainer.innerHTML = modalHTML;                              
 }
-
-
 
 
 gridContainer.addEventListener('click', e => {
@@ -130,6 +130,43 @@ modalClose.addEventListener('click', () => {
 });
 
 
+const rightArrows = document.querySelector(".right-arrow");
+const arrows = document.querySelector(".arrows");
+const leftArrows = document.querySelector(".left-arrow");
+
+rightArrows.addEventListener("click", () => {
+    const overlayCard = document.querySelector(".text-container-modal");
+    const index = parseInt(overlayCard.getAttribute("data-index"))
+    if (index !== employees.length - 1){
+        index += 1;
+        displayModal(index);
+    }
+})
+
+leftArrows.addEventListener("click", () => {
+    const overlayCard = document.querySelector(".text-container-modal");
+    const index = parseInt(overlayCard.getAttribute('data-index'))
+    if (index !== 0){
+        index - 1;
+        displayModal(index);
+    }
+}) 
 
 
 
+const input = document.querySelector('.search-input');
+
+//listen for search event
+
+input.addEventListener('keyup', e => {
+    let userInput= e.target.value.toLowerCase();
+    let names= document.querySelectorAll("h2");
+    names.forEach(name => {
+        if (name.textContent.toLowerCase().includes(userInput)) {
+            name.parentNode.parentNode.style.display = 'block';
+        }else {
+            name.parentNode.parentNode.style.display = 'none';
+        }
+    });
+    
+});

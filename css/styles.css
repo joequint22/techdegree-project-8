@@ -9,12 +9,13 @@
 
 body{
     position: relative;
-    background: #4d4d4d;
+    background: #202020;
     overflow-x: hidden;
 }
 
 .header-container{
     display: flex;
+    flex-direction: column;
     font-size: 1.2rem;
     height: 200px;
 }
@@ -28,6 +29,22 @@ body{
     font-weight: 500;
 }
 
+.search-input{
+    color: rgba(0, 0, 0, 0.75);
+    align-self: center;
+    margin: auto 0;
+    margin-top: -10px;
+    padding: 7px;
+    height: 30px;
+    width: 74%;
+    border-radius: 2px;
+    outline: none;
+    background: #ffffffe0
+}
+.search-input:click{
+    border: none;
+
+}
 .grid-container{
     display: grid;
     grid-template-columns: 1fr;
@@ -38,20 +55,19 @@ body{
 }
 
 .card{
-    box-shadow: 0px 30px 50px  rgba(0, 0, 0, 0.438);
+    box-shadow: 0px 30px 50px  hwb(0 0% 100%);
     margin: 10px auto 50px auto;
     height: 550px;
-    width: 90%;
+    width: 94%;
     display: flex;
     flex-direction: column;
-    border: 2.5px solid rgba(128, 128, 128, 0.26);
+    border: 2.5px solid rgb(119, 119, 187);
     border-radius: 8px;
     box-shadow: 10px solid black;
-    background: #e6dfdf;
+    background: #46464617;
     transform: translateX(400%);
     transition: .4235s ease;
 }
-
 .card:nth-of-type(odd){
     transform: translateX(-400%);
 }
@@ -83,6 +99,7 @@ body{
 }
 
 .text-container{  
+    color: white;
     display: flex;
     flex-direction: column;  
     text-align: start;
@@ -101,6 +118,7 @@ body{
     font-size: .8rem;
     margin: auto; 
     text-align: center;
+    color: white;
 }
 
 .email, .address{
@@ -122,13 +140,15 @@ body{
     opacity: .5;
     margin: auto;
  }
-.overlay{
+
+
+ .overlay{
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(100, 100, 100, 0.4)
+    background: rgba(0, 0, 0, 0.808)
 }
 
 .modal{
@@ -138,10 +158,11 @@ body{
     text-align: center;
     padding: 30px 20px;
     position: relative;
-    background: #fff;
-    border: 1px solid #77b;
+    background: #080808;
+    box-shadow: 0px 10px 5000px 10px  #77b;
     border-radius: 8px;
 }
+
 
 .avatar-modal{
     border-radius: 50%;
@@ -165,14 +186,38 @@ hr{
     opacity: 0.2;
     margin: 20px 0 30px 0;
 }
+
+.hr-name{
+    margin: 0;
+    opacity: 0;
+}
+
 .modal-info p{
     opacity: 0.6;
     font-size: 0.9rem;
     margin: 15px;
     margin-top: 0;
 }
+.arrows{
+    font-size: 1.2rem;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    top: 18%;
+    right: 79.5%;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    transition: transform .235s ease;
+}
+.right-arrow{
+    left: 80%;
+}
+.arrows:hover{
+    transform: scale(1.435);
+}
 
 .modal-close{
+    color: white;
     position: absolute;
     right: 12.5px;
     top: 12.5px;
@@ -181,12 +226,18 @@ hr{
     cursor: pointer;
 }
 
+
+
 .hidden{
     display: none;
 }
 
 @media screen and (min-width: 768px){
 
+
+    .hr-name{
+        display: none;
+    }
 
     .header-container{
         height: 175px;
@@ -198,6 +249,10 @@ hr{
         font-size: 1.4rem;
         font-weight: 500;
         padding-top: 50px;
+    }
+    .search-input{
+        margin-bottom: 13px;
+        width: 61%;
     }
     
     .grid-container{
@@ -219,7 +274,7 @@ hr{
     }
     .avatar{
         margin: auto;
-        height: 120%;
+        height: 100%;
         margin: 1.5px;
         padding: 0;
     }
@@ -243,6 +298,10 @@ hr{
         padding-left: 40px;
     }
 
+   .text-container-modal{
+        align-items: center;
+
+   }
     .avatar-modal{
         margin: 25px;
         margin-top: 10px;
@@ -273,54 +332,75 @@ hr{
         margin: auto;
     }
 
+    .header-container{
+        height: 100px;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }    
     .header-container p{
+        font-size: 1.35rem;
         text-align: start;
-        margin: auto auto 20px 55px;
+        padding: 0;
+        margin-top: 50px;
+        margin-right: 110px;
     }
+
+    .search-input{
+        color: black;
+
+        width: 33%;
+        height: 25px;
+        margin: auto;
+        justify-self: end;
+        margin-top: 60px;
+    }
+
     .card{
-        height: 200px;
-        width: 80%;
-        box-shadow: 0 3px   rgba(0, 0, 0, 0.2);
-        height: 150px;
+        height: 170px;
         width: 90%;
         overflow: hidden;
         justify-content: space-around;
     }
+
     .card-container{
         display: grid;
         grid-auto-flow: column;
-        padding-left: 6px;
+        margin-left: -40px;
 
     }
     .text-container{
         text-align: start;
         padding: 0;
+        margin-top: 18px;
     }
     .name, .email, .address{
         margin: 0;
         padding: 0;
     }
     .email, .address{
-        margin: 0;
-        padding: 0;
-        font-size: .8rem;
+        font-size: .6rem;
     }
 
+    .hr-name{
+        display: none;
+
+    }
     .name{
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 35px;
         width: 100%;
 
     }
     .avatar{  
        height: 80%;
-       padding: 0;
-       margin-left: 15px;
+       margin-left: 25px;
+       margin-right: -10px;
 
     }
     .modal{
         width: 40%;
-        height: 52%;
+        height: 50%;
     }
 
     .name-modal{
@@ -328,7 +408,7 @@ hr{
     }
 
     .avatar-modal{
-        width: 50%;
+        width: 25%;
     }
     .text-container-modal{
         padding: 0;
