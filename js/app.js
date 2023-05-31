@@ -171,9 +171,9 @@ input.addEventListener('keyup', e => {
     let names= document.querySelectorAll("h2");
     names.forEach(name => {
         if (name.textContent.toLowerCase().includes(userInput)) {
-            name.parentNode.parentNode.style.display = 'block';
+            name.closest('.card').style.display = 'block';
         }else {
-            name.parentNode.parentNode.parentNode.style.display = 'none';
+            name.closest('.card').style.display = 'none';
         }
     });
 });
