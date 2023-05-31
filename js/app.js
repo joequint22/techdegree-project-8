@@ -173,9 +173,7 @@ input.addEventListener('keyup', e => {
         if (name.textContent.toLowerCase().includes(userInput)) {
             name.parentNode.parentNode.style.display = 'block';
         }else {
-            name.parentNode.parentNode.style.display = 'none';
+            name.parentNode.parentNode.parentNode.style.display = 'none';
         }
     });
-    return names;
-    
 });
