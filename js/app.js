@@ -1,24 +1,26 @@
 //animation on scroll 
 
 
-function checkCards(){
-    const triggerBottom = window.innerHeight / 5 * 4;
-    const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            const cardTop = card.getBoundingClientRect().top
-            if(cardTop < triggerBottom){
-                card.classList.add('show')
-            } else {
-                card.classList.remove('show')
-            }
+ //   function checkCards(){
+ //   const triggerBottom = window.innerHeight / 5 * 4;
+ //   const cards = document.querySelectorAll('.card');
+ //       cards.forEach(card => {
+ //           const cardTop = card.getBoundingClientRect().top
+ //           if(cardTop < triggerBottom){
+  //              card.classList.add('show')
+  //          } else {
+   //             card.classList.remove('show')
+   //         }
+//
+//})
+   // }
 
-        })
-}
 
 
+    //checkCards() 
+  //  window.addEventListener('scroll', checkCards);
 
-checkCards() 
-window.addEventListener('scroll', checkCards);
+
         
         
 //Will hold the values from API
@@ -54,6 +56,7 @@ fetch(urlAPI)
 
 function displayEmployees(employeeData){
     employees = employeeData;
+    
 
     //store the employee HTML as we create it
     let employeeHTML = '';
@@ -86,6 +89,8 @@ function displayEmployees(employeeData){
 
 function displayModal(index){
 
+
+
     //use object destructuring make out template literal cleaner
     let { name, dob, phone, email, location: {city, street, state, postcode}, picture } = employees[index];
 
@@ -107,8 +112,33 @@ function displayModal(index){
             
         </div>
     `
+
+
+
+
     overlay.classList.remove('hidden');
-    modalContainer.innerHTML = modalHTML;                              
+    modalContainer.innerHTML = modalHTML;      
+    
+    const rightArrow = document.querySelector(".right-arrow");
+    const leftArrow = document.querySelector(".left-arrow");
+    
+    rightArrow.addEventListener("click", () => {
+    const overlayCard = document.querySelector(".text-container-modal");
+    let index = parseInt(overlayCard.getAttribute("data-index"))
+        if (index !== employees.length - 1){
+            index += 1;
+            displayModal(index);
+        }
+    })
+
+    leftArrow.addEventListener("click", () => {
+    const overlayCard = document.querySelector(".text-container-modal");
+    let index = parseInt(overlayCard.getAttribute('data-index'))
+        if (index !== 0){
+            index -= 1;
+            displayModal(index);
+        }
+    })                             
 }
 
 
@@ -130,33 +160,11 @@ modalClose.addEventListener('click', () => {
 });
 
 
-const rightArrows = document.querySelector(".right-arrow");
-const arrows = document.querySelector(".arrows");
-const leftArrows = document.querySelector(".left-arrow");
-
-rightArrows.addEventListener("click", () => {
-    const overlayCard = document.querySelector(".text-container-modal");
-    const index = parseInt(overlayCard.getAttribute("data-index"))
-    if (index !== employees.length - 1){
-        index += 1;
-        displayModal(index);
-    }
-})
-
-leftArrows.addEventListener("click", () => {
-    const overlayCard = document.querySelector(".text-container-modal");
-    const index = parseInt(overlayCard.getAttribute('data-index'))
-    if (index !== 0){
-        index - 1;
-        displayModal(index);
-    }
-}) 
 
 
 
+// FILTER
 const input = document.querySelector('.search-input');
-
-//listen for search event
 
 input.addEventListener('keyup', e => {
     let userInput= e.target.value.toLowerCase();
@@ -168,5 +176,6 @@ input.addEventListener('keyup', e => {
             name.parentNode.parentNode.style.display = 'none';
         }
     });
+    return names;
     
 });

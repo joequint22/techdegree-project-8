@@ -65,9 +65,10 @@ body{
     border-radius: 8px;
     box-shadow: 10px solid black;
     background: #46464617;
-    transform: translateX(400%);
-    transition: .4235s ease;
+    /*transform: translateX(400%);
+    transition: .4235s ease;*/
 }
+/*
 .card:nth-of-type(odd){
     transform: translateX(-400%);
 }
@@ -75,6 +76,7 @@ body{
 .card.show{
     transform: translateX(0);
 }
+*/
 
 .card-container{
     display: flex;
@@ -400,7 +402,7 @@ hr{
     }
     .modal{
         width: 40%;
-        height: 50%;
+        height: 53%;
     }
 
     .name-modal{
