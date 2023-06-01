@@ -171,7 +171,7 @@ input.addEventListener('keyup', e => {
     let names= document.querySelectorAll("h2");
     names.forEach(name => {
         if (name.textContent.toLowerCase().includes(userInput)) {
-            name.closest('.card').style.display = 'block';
+            name.closest('.card').style.display = 'grid';
         }else {
             name.closest('.card').style.display = 'none';
         }
