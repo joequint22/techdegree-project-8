@@ -96,11 +96,11 @@ function displayModal(index){
 
     let date = new Date(dob.date);
     const modalHTML = `
-        <p class="arrows left-arrow">${"<"}</p>
+        <button class="arrows left-arrow">${"<"}</button>
         <img class="avatar-modal" src="${picture.large}" />
-        <p class="arrows right-arrow">${">"}</p>
+        <button class="arrows right-arrow">${">"}</button>
         <div class="text-container-modal" data-index="${index}">
-            <h2 class="name-modal">${name.first} ${name.last}</h2>
+            <h2 class="name-modal">${name.first} ${name.last}
             <p class="email-modal">${email}</p>
             <p class="city-modal">${city}</p>
             <hr />
