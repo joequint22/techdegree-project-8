@@ -145,7 +145,10 @@ body{
 
 
  .overlay{
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -154,9 +157,7 @@ body{
 }
 
 .modal{
-    width: 72%;
-    height: 600px;
-    margin: 155px auto;
+    width: 400px;
     text-align: center;
     padding: 30px 20px;
     position: relative;
@@ -164,7 +165,6 @@ body{
     box-shadow: 0px 10px 5000px 10px  #77b;
     border-radius: 8px;
 }
-
 
 .avatar-modal{
     border-radius: 50%;
@@ -317,10 +317,7 @@ hr{
         align-self: center;
     }
 
-    .modal{
-        width: 57.5%;
-        height: auto;
-    }
+
     .modal-close{
         top: 10px;
         right: 15px;
@@ -400,10 +397,6 @@ hr{
        margin-left: 25px;
        margin-right: -10px;
 
-    }
-    .modal{
-        width: 40%;
-        height: 63%;
     }
 
     .name-modal{
