@@ -129,6 +129,11 @@ function displayModal(index){
             index += 1;
             displayModal(index);
         }
+        else {
+            index -= 11;
+            displayModal(index);
+
+        }
     })
 
     leftArrow.addEventListener("click", () => {
@@ -137,6 +142,10 @@ function displayModal(index){
         if (index !== 0){
             index -= 1;
             displayModal(index);
+        } else {
+            index += 11;
+            displayModal(index);
+
         }
     })                             
 }
